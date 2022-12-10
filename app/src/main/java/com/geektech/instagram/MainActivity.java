@@ -34,10 +34,13 @@ public class MainActivity extends AppCompatActivity {
                         openFragment(new SearchFragment());
                         break;
                         case R.id.menu_add:
+                            openFragment(new AddFragment());
                             break;
                          case R.id.menu_like:
+                             openFragment(new LikeFragment());
                              break;
                              case R.id.menu_profile:
+                                 openFragment(new ProfileFragment());
                                  break;
                 }
                 return true;
