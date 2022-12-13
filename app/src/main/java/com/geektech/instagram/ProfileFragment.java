@@ -17,4 +17,22 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
+
+    public void onProfilePictureListener(View view) {
+    }
+
+    public void onLinesClick(View view) {
+    }
+
+    public void onAccountClick(View view) {
+    }
+
+    public void onAddClick(View view) {
+    }
+
+    public void onFollowingsClick(View view) {
+    }
+
+    public void onFollowersClick(View view) {
+    }
 }
