@@ -7,8 +7,12 @@ import androidx.fragment.app.FragmentContainerView;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Switch;
 
+import com.geektech.instagram.add.AddFragment;
+import com.geektech.instagram.home.HomeFragment;
+import com.geektech.instagram.like.LikeFragment;
+import com.geektech.instagram.profile.ProfileFragment;
+import com.geektech.instagram.search.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 

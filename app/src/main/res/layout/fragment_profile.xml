@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    tools:context=".profile.ProfileFragment">
 
     <LinearLayout
         app:layout_constraintTop_toTopOf="parent"
@@ -159,4 +159,5 @@
         android:text="Joan of Arc
         \n(French: Jeanne d'Arc pronounced [ʒan daʁk]; \nc. 1412 – 30 May 1431) is a patron saint of France"
         />
+   
 </androidx.constraintlayout.widget.ConstraintLayout>
