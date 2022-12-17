@@ -1,25 +1,27 @@
 package com.geektech.instagram.model;
 
+import android.net.Uri;
+
 public class Post {
-    private String profile;
     private String name;
-    private String image;
+    private Uri profile;
+    private Uri image;
     private Integer likeNumber;
 
     public Post() {
     }
 
-    public Post(String profile, String name, String image) {
+    public Post(Uri  profile, String name, Uri  image) {
         this.profile = profile;
         this.name = name;
         this.image = image;
     }
 
-    public String getProfile() {
+    public Uri getProfile() {
         return profile;
     }
 
-    public void setProfile(String profile) {
+    public void setProfile(Uri profile) {
         this.profile = profile;
     }
 
@@ -31,11 +33,11 @@ public class Post {
         this.name = name;
     }
 
-    public String getImage() {
+    public Uri getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(Uri image) {
         this.image = image;
     }
 }

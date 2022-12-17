@@ -159,5 +159,5 @@
         android:text="Joan of Arc
         \n(French: Jeanne d'Arc pronounced [ʒan daʁk]; \nc. 1412 – 30 May 1431) is a patron saint of France"
         />
-   
+
 </androidx.constraintlayout.widget.ConstraintLayout>

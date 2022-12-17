@@ -17,12 +17,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="joshua_l"
+        android:textColor="@color/black"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="10dp"
         android:layout_margin="12dp"
         app:layout_constraintStart_toEndOf="@id/item_home_image"
         />
     <ImageView
+        android:scaleType="centerCrop"
         android:layout_marginTop="12dp"
         android:layout_width="match_parent"
         android:layout_height="300dp"

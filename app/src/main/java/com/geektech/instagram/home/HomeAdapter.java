@@ -18,26 +18,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder>{
+
     private List<Post> list=new ArrayList<>();
+
     public void setList(List<Post>list){
-        this.list.clear();
-        this.list.addAll(list);
+        this.list=list;
     notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home,parent,false);
+       LayoutInflater layoutInflater=LayoutInflater.from(parent.getContext());
+        View view=layoutInflater.inflate(R.layout.item_home,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-  String  name=list.get(position).getName();
-  String profile=list.get(position).getProfile();
-  holder.name.setText(name);
-  holder.image.setImageURI(Uri.parse(profile));
+        holder.bind(list.get(position));
     }
 
     @Override
@@ -54,6 +53,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder>{
             profile=itemView.findViewById(R.id.item_home_image);
             name=itemView.findViewById(R.id.item_home_name);
             image=itemView.findViewById(R.id.home_main_image);
+        }
+        public void bind(Post post){
+            name.setText(post.getName());
+            profile.setImageURI(post.getProfile());
+            image.setImageURI(post.getImage());
         }
     }
 }
