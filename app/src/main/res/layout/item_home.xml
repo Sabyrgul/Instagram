@@ -16,7 +16,6 @@
         android:id="@+id/item_home_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="joshua_l"
         android:textColor="@color/black"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="10dp"

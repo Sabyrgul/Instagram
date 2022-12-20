@@ -21,23 +21,16 @@ public class Post {
         return profile;
     }
 
-    public void setProfile(Uri profile) {
-        this.profile = profile;
-    }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+
 
     public Uri getImage() {
         return image;
     }
 
-    public void setImage(Uri image) {
-        this.image = image;
-    }
+
 }

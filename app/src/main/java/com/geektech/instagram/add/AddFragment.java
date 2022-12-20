@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -15,6 +17,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.geektech.instagram.MainActivity;
 import com.geektech.instagram.R;
 import com.geektech.instagram.model.Post;
 
@@ -26,6 +32,9 @@ public class AddFragment extends Fragment {
   ImageView imageView1;
   ImageView imageView2;
   EditText editText;
+  Uri profileUri;
+  Uri imageUri;
+
   List<Post>list=new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,25 +59,48 @@ public class AddFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         imageView1=view.findViewById(R.id.add_image1);
         imageView2=view.findViewById(R.id.add_image2);
         editText=view.findViewById(R.id.add_edittext);
         button=view.findViewById(R.id.btn_add);
-        Intent intent=new Intent();
+
+        ActivityResultLauncher<Intent>profilePick=
+                registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),result -> {
+                  profileUri=result.getData().getData();
+            Glide.with(this).load(profileUri).transform(new CenterCrop()
+                    ,new RoundedCorners(100)).into(imageView1);
+                });
+        ActivityResultLauncher<Intent>imagePick=
+                registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),result -> {
+                   imageUri=result.getData().getData();
+                    Glide.with(this).load(imageUri).into(imageView2);
+                });
+
+        ActivityResultLauncher<Intent>textPick=
+                registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),result -> {
+                    result.getData().getData();
+
+                });
+
         imageView1.setOnClickListener(view1 -> {
+            Intent intent=new Intent();
             intent.setAction(Intent.ACTION_PICK);
             intent.setType("image/*");
-            startActivityForResult(intent,1);
+            profilePick.launch(intent);
         });
         imageView2.setOnClickListener(view12 -> {
+            Intent intent=new Intent();
             intent.setAction(Intent.ACTION_PICK);
             intent.setType("image/*");
-            startActivityForResult(intent,2);
+            imagePick.launch(intent);
         });
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            list.add(new Post(Uri.parse(imageView1.toString()),editText.getText().toString(),Uri.parse(imageView2.toString())));
+           Post post=new Post(profileUri,editText.getText().toString(),imageUri);
+
+                ((MainActivity) getActivity()).list.add(post);
             }
         });
     }

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.geektech.instagram.R;
+import com.geektech.instagram.add.AddFragment;
 import com.geektech.instagram.model.Post;
 
 import java.util.ArrayList;
@@ -35,7 +36,6 @@ public class HomeFragment extends Fragment {
         adapter=new HomeAdapter();
         recyclerView.setAdapter(adapter);
         List<Post>list=new ArrayList<>();
-
         adapter.setList(list);
     }
 }
