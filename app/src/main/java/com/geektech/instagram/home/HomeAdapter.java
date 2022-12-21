@@ -8,9 +8,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.geektech.instagram.R;
 import com.geektech.instagram.model.Post;
 
@@ -36,7 +38,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.bind(list.get(position));
+        holder.bind(holder,list.get(position));
     }
 
     @Override
@@ -54,10 +56,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder>{
             name=itemView.findViewById(R.id.item_home_name);
             image=itemView.findViewById(R.id.home_main_image);
         }
-        public void bind(Post post){
-            name.setText(post.getName());
-            profile.setImageURI(post.getProfile());
-            image.setImageURI(post.getImage());
+        public void bind(ViewHolder holder,Post post){
+          //  Glide.with(holder.itemView.getContext()).load(post.getName()).into(name);
+            Glide.with(holder.itemView.getContext()).load(post.getProfile()).into(profile);
+            Glide.with(holder.itemView.getContext()).load(post.getImage()).into(image);
         }
     }
 }

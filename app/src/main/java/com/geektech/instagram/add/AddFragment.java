@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
@@ -56,6 +57,14 @@ public class AddFragment extends Fragment {
             }
         }
 
+    public Uri getProfileUri() {
+        return profileUri;
+    }
+
+    public Uri getImageUri() {
+        return imageUri;
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -74,7 +83,7 @@ public class AddFragment extends Fragment {
         ActivityResultLauncher<Intent>imagePick=
                 registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),result -> {
                    imageUri=result.getData().getData();
-                    Glide.with(this).load(imageUri).into(imageView2);
+                    Glide.with(this).load(imageUri).transform(new CenterCrop()).into(imageView2);
                 });
 
         ActivityResultLauncher<Intent>textPick=
@@ -95,13 +104,10 @@ public class AddFragment extends Fragment {
             intent.setType("image/*");
             imagePick.launch(intent);
         });
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-           Post post=new Post(profileUri,editText.getText().toString(),imageUri);
-
-                ((MainActivity) getActivity()).list.add(post);
-            }
+        button.setOnClickListener(view13 -> {
+       Post post=new Post(profileUri,editText.getText().toString(),imageUri);
+            Toast.makeText(getContext(), "Успешно добавлен", Toast.LENGTH_LONG).show();
+       ((MainActivity) getActivity()).list.add(post);
         });
     }
 

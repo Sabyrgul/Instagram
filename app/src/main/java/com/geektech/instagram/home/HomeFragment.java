@@ -21,7 +21,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
   RecyclerView recyclerView;
   HomeAdapter adapter;
-
+  AddFragment addFragment=new AddFragment();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
