@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.geektech.instagram.MainActivity;
 import com.geektech.instagram.R;
 import com.geektech.instagram.add.AddFragment;
 import com.geektech.instagram.model.Post;
@@ -35,7 +36,6 @@ public class HomeFragment extends Fragment {
         recyclerView=view.findViewById(R.id.home_recycler);
         adapter=new HomeAdapter();
         recyclerView.setAdapter(adapter);
-        List<Post>list=new ArrayList<>();
-        adapter.setList(list);
+        adapter.setList(((MainActivity)getActivity()).list);
     }
 }

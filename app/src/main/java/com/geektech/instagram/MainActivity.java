@@ -22,7 +22,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
  BottomNavigationView bottomNavigationView;
  FragmentContainerView fragmentContainerView;
- public List list=new ArrayList<>();
+ public List list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

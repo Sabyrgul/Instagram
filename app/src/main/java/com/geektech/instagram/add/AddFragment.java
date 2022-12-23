@@ -23,6 +23,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.geektech.instagram.MainActivity;
 import com.geektech.instagram.R;
+import com.geektech.instagram.home.HomeFragment;
 import com.geektech.instagram.model.Post;
 
 import java.util.ArrayList;
@@ -108,6 +109,10 @@ public class AddFragment extends Fragment {
        Post post=new Post(profileUri,editText.getText().toString(),imageUri);
             Toast.makeText(getContext(), "Успешно добавлен", Toast.LENGTH_LONG).show();
        ((MainActivity) getActivity()).list.add(post);
+            getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container_view,new HomeFragment())
+                    .commit();
         });
     }
 

@@ -38,7 +38,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.bind(holder,list.get(position));
+        holder.bind(list.get(position));
     }
 
     @Override
@@ -56,10 +56,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder>{
             name=itemView.findViewById(R.id.item_home_name);
             image=itemView.findViewById(R.id.home_main_image);
         }
-        public void bind(ViewHolder holder,Post post){
-          //  Glide.with(holder.itemView.getContext()).load(post.getName()).into(name);
-            Glide.with(holder.itemView.getContext()).load(post.getProfile()).into(profile);
-            Glide.with(holder.itemView.getContext()).load(post.getImage()).into(image);
+        public void bind(Post post){
+           name.setText(post.getName());
+            Glide.with(itemView.getContext()).load(post.getProfile()).into(profile);
+            Glide.with(itemView.getContext()).load(post.getImage()).into(image);
         }
     }
 }
